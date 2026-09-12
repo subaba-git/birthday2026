@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ff8fab">
+  <title>Happy Birthday!</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="screen birthday-screen">
+    <div class="confetti confetti-a">✦</div>
+    <div class="confetti confetti-b">✧</div>
+
+    <section class="birthday-card">
+      <p class="eyebrow">2026.09.22</p>
+      <div class="cake">🎂</div>
+      <h1>HAPPY<br>BIRTHDAY!</h1>
+
+      <p class="to-name">Dear <span id="name">〇〇</span></p>
+
+      <div class="message-box">
+        <p id="birthdayMessage">
+          お誕生日おめでとう！<br>
+          素敵な1年になりますように。<br>
+          これからもよろしくね。
+        </p>
+      </div>
+
+      <button id="giftButton" class="gift-button">🎁 プレゼントをオープン</button>
+
+      <div id="passwordArea" class="gift hidden">
+        <div class="lock-emoji">🔐</div>
+        <h2>Secret Password</h2>
+        <p>4桁のパスワードを入力してね</p>
+        <input
+          id="passwordInput"
+          class="password-input"
+          type="password"
+          inputmode="numeric"
+          maxlength="4"
+          pattern="[0-9]{4}"
+          placeholder="0000"
+          autocomplete="off"
+        >
+        <button id="passwordButton" class="gift-button">開く</button>
+        <p id="passwordError" class="password-error"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
