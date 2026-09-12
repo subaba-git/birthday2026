@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>管理者設定</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body class="travel-page">
+<main class="screen travel-screen">
+<p class="step">ADMIN</p><p class="small-heading">SITE SETTINGS</p>
+<h1>⚙️ 管理者設定</h1>
+<p class="subtitle">アキネーターの表示と、管理者が決定した旅行先を設定します。</p>
+<section class="intro-card">
+<label style="display:block;text-align:left;font-weight:700;margin-bottom:8px">アキネーター</label>
+<select id="showDiagnosis" style="width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;font-size:16px">
+<option value="true">有効：アクセスするたびに診断を表示</option>
+<option value="false">無効：診断を表示せずカウントダウンへ</option>
+</select>
+<label style="display:block;text-align:left;font-weight:700;margin:18px 0 8px">管理者が決定した旅行先</label>
+<input id="destination" type="text" placeholder="例：京都" style="width:100%;box-sizing:border-box;padding:14px;border-radius:12px;border:1px solid #ddd;font-size:16px">
+<button id="generate" class="main-button" style="margin-top:20px">設定ファイルを作成</button>
+<p id="status" style="margin-top:14px"></p>
+</section>
+<section class="intro-card" style="margin-top:16px;text-align:left">
+<h2>動作</h2>
+<p>「有効」の場合、ユーザーが何回アクセスしてもアキネーター画面になります。診断結果をユーザーのCookieやlocalStorageには保存しません。</p>
+<p>「無効」の場合、ユーザーはアキネーターを経由せずカウントダウンページへ移動します。</p>
+<p><strong>重要：</strong>このサイトが静的ホスティングの場合、管理者ページから公開サイトの設定ファイルを直接書き換えることはできません。下のボタンで生成した <code>config.js</code> をサイトの <code>js/config.js</code> と置き換えてください。</p>
+</section>
+</main>
+<script>
+const SHOW = document.getElementById('showDiagnosis');
+const DEST = document.getElementById('destination');
+const STATUS = document.getElementById('status');
+SHOW.value='true'; DEST.value='旅行先';
+document.getElementById('generate').addEventListener('click',()=>{
+ const destination=DEST.value.trim()||'旅行先';
+ const text='// サイト共通設定\\nconst SHOW_DIAGNOSIS = '+SHOW.value+';\\nconst TRIP_DESTINATION = '+JSON.stringify(destination)+';\\n';
+ const blob=new Blob([text],{type:'text/javascript'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='config.js'; a.click(); URL.revokeObjectURL(a.href);
+ STATUS.textContent='config.js を作成しました。js/config.js と置き換えてください。';
+});
+</script>
+</body></html>
