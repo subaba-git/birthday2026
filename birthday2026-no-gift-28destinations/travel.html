@@ -9,11 +9,10 @@
 </head>
 <body class="travel-page">
 <script>
-  // 裏でこの値を変更すると、診断済みの人を自動的にカウントダウンページへ送る。
-  // true にすると自動遷移、false にすると診断を常に表示する。
+  // Tなら、診断済みかどうかに関係なく全員カウントダウンへ移動
   const AUTO_REDIRECT_TO_COUNTDOWN = true;
 
-  if (AUTO_REDIRECT_TO_COUNTDOWN && localStorage.getItem("travelDiagnosisCompleted") === "true") {
+  if (AUTO_REDIRECT_TO_COUNTDOWN) {
     const destination = localStorage.getItem("travelDestination");
     const target = destination
       ? `countdown.html?destination=${encodeURIComponent(destination)}`
