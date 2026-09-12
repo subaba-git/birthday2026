@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff4f8">
+<title>なるみの旅行先診断</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="travel-page">
+<script>
+  // 一度旅行先が決まったら、次回アクセス時は診断をスキップして
+  // カウントダウンページへ直接移動します。
+  if (localStorage.getItem("travelDiagnosisCompleted") === "true") {
+    location.replace("countdown.html");
+  }
+</script>
+<main class="screen travel-screen">
+  <p class="step">STEP 1 · 20 QUESTIONS</p>
+  <p class="small-heading">SPECIAL TRIP DIAGNOSIS</p>
+  <h1>✈️ 旅行先を決めよう</h1>
+  <p class="subtitle">なるみにぴったりの旅行先を、ちょっと本気で診断します。</p>
+
+  <div class="date-pill">2026.09.22 → 09.23</div>
+
+  <section id="introCard" class="intro-card">
+    <div class="intro-icon">🔮</div>
+    <h2>旅行先アキネーター</h2>
+    <p>これから20問の質問で、好みを細かく見ていきます。<br>直感で答えてね。</p>
+    <button id="startButton" class="main-button">診断スタート →</button>
+  </section>
+
+  <section id="quizArea" class="is-hidden">
+    <div class="progress-area">
+      <div class="progress-track"><div id="progressBar"></div></div>
+      <span id="progressText">1 / 20</span>
+    </div>
+
+    <div class="question-box">
+      <div class="question-number" id="questionNumber">QUESTION 01</div>
+      <h2 id="questionTitle"></h2>
+      <div id="answers" class="answer-list"></div>
+    </div>
+
+    <button id="backButton" class="sub-button">← ひとつ前の質問へ</button>
+  </section>
+
+  <section id="thinkingBox" class="result-box is-hidden thinking-box">
+    <div class="thinking-dots"><span></span><span></span><span></span></div>
+    <h2>診断中…</h2>
+    <p>なるみにぴったりな旅行先を<br>探しています。</p>
+  </section>
+
+  <section id="travelResult" class="result-box is-hidden result-special">
+    <p class="result-label">今回の旅行先は……</p>
+    <div class="result-reveal">✨</div>
+    <h2 id="destinationResult"></h2>
+    <div id="destinationTags" class="result-tags"></div>
+    <p id="destinationComment"></p>
+    <div id="destinationDetails" class="destination-details"></div>
+    <button id="countdownButton" class="main-button">
+      カウントダウンを見る ⏳
+    </button>
+    <p class="diagnosis-locked">この結果で決定すると、次回以降は診断をスキップします。</p>
+  </section>
+</main>
+<script src="js/travel.js"></script>
+</body>
+</html>

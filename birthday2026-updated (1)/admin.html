@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>管理画面 · Birthday Trip</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+<main class="screen admin-screen">
+  <p class="step">ADMIN</p><p class="small-heading">BIRTHDAY TRIP SETTINGS</p>
+  <h1>⚙️ 管理画面</h1>
+  <p class="subtitle">アキネーターを表示するか、このブラウザで設定できます。</p>
+  <section class="admin-card">
+    <div class="setting-row">
+      <div><strong>旅行先アキネーター</strong><p id="settingDescription"></p></div>
+      <button id="toggleDiagnosis" class="toggle-button" type="button"></button>
+    </div>
+    <div class="admin-divider"></div>
+    <p class="admin-label">現在の旅行先</p>
+    <strong id="currentDestination">旅行先</strong>
+    <button id="resetDiagnosis" class="sub-button">診断結果をリセット</button>
+  </section>
+  <section class="admin-card">
+    <p class="admin-label">設定の反映先</p>
+    <p class="admin-help">この管理画面の設定は、現在使っているブラウザに保存されます。GitHub Pages全体で全員に同じ設定を配信したい場合は、js/config.js の DEFAULT_SHOW_DIAGNOSIS を変更してください。</p>
+  </section>
+  <button class="main-button" onclick="location.href='countdown.html'">カウントダウンを見る</button>
+</main>
+<script src="js/config.js"></script><script src="js/admin.js"></script>
+</body></html>
